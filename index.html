@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 Fan Pack — Wallpapers, Tracker, Stats &amp; More</title>
+  <meta name="description" content="Get the ultimate FIFA 2026 digital fan pack. 32-team wallpapers, prediction tracker, stats PDF and match schedule. ₹99 only. Instant download." />
+  <meta property="og:title" content="FIFA World Cup 2026 Fan Pack — Wallpapers, Tracker, Stats &amp; More" />
+  <meta property="og:description" content="Get the ultimate FIFA 2026 digital fan pack. 32-team wallpapers, prediction tracker, stats PDF and match schedule. ₹99 only. Instant download." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface-1: #111111;
+      --surface-2: #1a1a1a;
+      --accent-blue: #4FC3F7;
+      --accent-cyan: #00E5CC;
+      --text-primary: #ffffff;
+      --text-secondary: #999999;
+      --text-muted: #555555;
+      --border: rgba(255,255,255,0.08);
+      --border-light: rgba(255,255,255,0.06);
+      --card-bg: rgba(255,255,255,0.04);
+      --card-border: 0.5px solid rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .max-container { max-width: 1100px; margin: 0 auto; }
+
+    /* ════════════════════════════
+       NAVIGATION
+    ════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      transition: background 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    /* ════════════════════════════
+       SECTION 1: HERO
+    ════════════════════════════ */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-video-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.6) 0%,
+        rgba(10,10,10,0.15) 40%,
+        rgba(10,10,10,0.15) 60%,
+        rgba(10,10,10,0.85) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-horizon {
+      position: absolute;
+      top: 54%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-7deg);
+      width: 120vw;
+      height: 2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(79,195,247,0.12) 12%,
+        var(--accent-blue) 35%,
+        var(--accent-cyan) 65%,
+        rgba(0,229,204,0.12) 88%,
+        transparent 100%);
+      box-shadow:
+        0 0 80px 10px rgba(79,195,247,0.55),
+        0 0 260px 60px rgba(0,229,204,0.25),
+        0 0 500px 120px rgba(79,195,247,0.1);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-top-left {
+      position: absolute;
+      top: 108px;
+      left: 48px;
+      z-index: 5;
+    }
+
+    .hero-main-title {
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+    }
+
+    .hero-main-title em {
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .hero-bottom-left {
+      position: absolute;
+      bottom: 44px;
+      left: 48px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .hero-bottom-left:hover { color: var(--text-primary); }
+
+    .hero-bottom-left .arrow {
+      font-size: 20px;
+      display: inline-block;
+    }
+
+    .hero-bottom-left .label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── GALLERY GRID SECTION ── */
+    #gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      filter: brightness(0.8) contrast(1.05);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1) contrast(1.1);
+    }
+
+    .gallery-center-tile {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /* Glowing stadium horizon gradients + tactical grid lines */
+      background: 
+        radial-gradient(circle at top left, rgba(79, 195, 247, 0.22), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(0, 229, 204, 0.22), transparent 55%),
+        radial-gradient(circle at center, transparent 40%, rgba(255,255,255,0.02) 41%, rgba(255,255,255,0.02) 43%, transparent 44%),
+        linear-gradient(to right, transparent 49.5%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.02) 50.5%, transparent 51%),
+        linear-gradient(135deg, #121212 0%, #060606 100%);
+      padding: 32px 24px;
+      text-align: center;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      box-shadow: 
+        inset 0 0 24px rgba(79, 195, 247, 0.08),
+        0 20px 50px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 10;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      /* Add slight upscale and heavy glow on hover */
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .gallery-center-tile:hover {
+      transform: scale(1.03);
+      border-color: rgba(0, 229, 204, 0.4);
+      box-shadow: 
+        0 15px 40px rgba(0, 229, 204, 0.15),
+        0 30px 70px rgba(0,0,0,0.8),
+        inset 0 0 30px rgba(79, 195, 247, 0.15);
+    }
+
+    /* Decorative diagonal brand lines inside tile */
+    .gallery-center-tile::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 100%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(-35deg);
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(79, 195, 247, 0.03) 25%, 
+        rgba(0, 229, 204, 0.03) 75%, 
+        transparent 100%);
+      pointer-events: none;
+    }
+
+    .gallery-center-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(0, 229, 204, 0.3)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* Icon styles */
+    .gallery-center-icon {
+      width: clamp(36px, 6vw, 60px);
+      height: clamp(36px, 6vw, 60px);
+      margin-bottom: 14px;
+      filter: drop-shadow(0 0 12px rgba(0, 229, 204, 0.6));
+      animation: pulse-glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      0% { filter: drop-shadow(0 0 8px rgba(79, 195, 247, 0.4)); transform: scale(0.98); }
+      100% { filter: drop-shadow(0 0 16px rgba(0, 229, 204, 0.7)); transform: scale(1.02); }
+    }
+
+    .gallery-center-badge {
+      font-size: clamp(8px, 1vw, 10px);
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      box-shadow: 0 0 12px rgba(0,229,204,0.3);
+      display: inline-block;
+    }
+
+    .gallery-center-title {
+      font-size: clamp(14px, 2.2vw, 24px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 30%, #a2e0fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gallery-center-btn {
+      background: #ffffff;
+      color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(10px, 1.4vw, 14px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-center-btn:hover {
+      transform: scale(1.03) translateY(-1px);
+      box-shadow: 0 0 35px rgba(0, 229, 204, 0.6), 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    footer {
+      background: var(--surface-1);
+      border-top: 1px solid var(--border-light);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+    .footer-legal { font-size: 12px; color: var(--text-muted); text-align: center; }
+    .footer-credit { font-size: 12px; color: var(--text-muted); text-align: right; }
+
+    /* ════════════════════════════
+       ANIMATIONS & RESPONSIVE
+    ════════════════════════════ */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes nudge-down {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(6px); }
+      }
+      .hero-bottom-left .arrow {
+        animation: nudge-down 2s ease-in-out infinite;
+        display: inline-block;
+      }
+
+      @keyframes horizon-shimmer {
+        0%   { opacity: 0.8; }
+        100% { opacity: 1; }
+      }
+      .hero-horizon {
+        animation: horizon-shimmer 3.5s ease-in-out infinite alternate;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+
+      #hero { padding: 0 24px; }
+      .hero-top-left { left: 24px; top: 96px; }
+      .hero-bottom-left { left: 24px; bottom: 32px; }
+
+      .gallery-center-tile {
+        padding: 14px 10px;
+      }
+      .gallery-center-icon {
+        margin-bottom: 8px;
+      }
+      .gallery-center-badge {
+        margin-bottom: 6px;
+        padding: 3px 8px;
+        font-size: 7px;
+      }
+      .gallery-center-title {
+        margin-bottom: 12px;
+      }
+      .gallery-center-btn {
+        padding: 10px 18px;
+      }
+
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; gap: 10px; }
+      .footer-credit { text-align: center; }
+    }
+
+    /* ════════════════════════════
+       BUY POPUP MODAL
+    ════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1),
+                  visibility 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      background: #000000;
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      overflow: hidden;
+      transform: translateY(32px) scale(0.97);
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent-blue) 30%, var(--accent-cyan) 70%, transparent 100%);
+      box-shadow: 0 0 24px 4px rgba(79,195,247,0.5), 0 0 60px 12px rgba(0,229,204,0.25);
+    }
+
+    .modal-box::after {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 200px;
+      background: none;
+      pointer-events: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px; right: 20px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      z-index: 2;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+    .modal-inner {
+      padding: 48px 44px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,229,204,0.1);
+      border: 1px solid rgba(0,229,204,0.25);
+      border-radius: 40px;
+      padding: 5px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .modal-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .modal-hr {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 0 0 24px;
+    }
+
+    .modal-perks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .modal-perk {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .modal-perk-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: rgba(0,229,204,0.12);
+      border: 1px solid rgba(0,229,204,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-cyan);
+      font-size: 8px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .modal-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 20px 20px;
+      background: 
+        linear-gradient(rgba(17, 17, 17, 0.88), rgba(17, 17, 17, 0.88)),
+        url('download (19).jpeg') center center / cover no-repeat;
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-price-left { display: flex; flex-direction: column; gap: 3px; }
+
+    .modal-price-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .modal-price-amount {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .modal-price-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .modal-price-items {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    .modal-buy-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #ffffff;
+      color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      padding: 18px 24px;
+      border-radius: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-bottom: 14px;
+    }
+
+    .modal-buy-btn:hover {
+      transform: scale(1.015);
+      box-shadow: 0 0 50px rgba(79,195,247,0.4), 0 16px 40px rgba(0,0,0,0.3);
+    }
+
+    .modal-trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .modal-trust-row span {
+      font-size: 11px;
+      color: #555;
+      padding: 0 10px;
+      position: relative;
+    }
+
+    .modal-trust-row span:not(:last-child)::after {
+      content: '·';
+      position: absolute;
+      right: -1px;
+      color: #333;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes modal-glow-pulse {
+        0%, 100% { opacity: 0.6; }
+        50%       { opacity: 1; }
+      }
+      .modal-box::before {
+        animation: modal-glow-pulse 3s ease-in-out infinite;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .modal-inner { padding: 40px 24px 32px; }
+      .modal-perks { grid-template-columns: 1fr; gap: 8px; }
+      .modal-price-row { flex-direction: column; align-items: flex-start; }
+      .modal-price-items { text-align: left; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo">FIFA Fan Pack 2026</a>
+    <ul class="nav-links">
+      <li><button onclick="openBuyModal()" style="background:none;border:none;color:var(--text-secondary);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:color 0.2s">Get the Pack</button></li>
+    </ul>
+  </nav>
+
+  <!-- ── SECTION 1: HERO ── -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero-video-bg">
+      <video autoplay muted loop playsinline poster="hero_26.png">
+        <source src="herovideo.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-horizon" aria-hidden="true"></div>
+
+    <div class="hero-top-left reveal">
+      <h1 class="hero-main-title">FIFA World Cup<br><em>2026</em></h1>
+    </div>
+
+    <a href="#gallery-grid" class="hero-bottom-left reveal" aria-label="Scroll down to Fan Pack Previews">
+      <span class="arrow">↓</span>
+      <span class="label">Preview the Pack</span>
+    </a>
+  </section>
+
+  <!-- ── SECTION 1.5: GALLERY GRID ── -->
+  <section id="gallery-grid" aria-label="Fan pack preview gallery">
+    <div class="gallery-item reveal">
+      <img src="FIFA World Cup 2026.jpeg" alt="FIFA World Cup 2026 Fan Pack preview" loading="lazy" />
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.05s">
+      <img src="HAALAND.jpeg" alt="Haaland World Cup wallpaper preview" loading="lazy" />
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.1s">
+      <img src="Instagram (1).jpeg" alt="Digital Fan Pack preview card" loading="lazy" />
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.15s">
+      <img src="Instagram.jpeg" alt="FIFA 2026 wallpaper on mobile preview" loading="lazy" />
+    </div>
+    <div class="gallery-center-tile reveal" style="transition-delay:.2s">
+      <!-- Neon Soccer Ball SVG -->
+      <svg class="gallery-center-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4FC3F7" />
+            <stop offset="100%" stop-color="#00E5CC" />
+          </linearGradient>
+        </defs>
+        <!-- Outer dashed circle -->
+        <circle cx="50" cy="50" r="42" stroke="url(#icon-grad)" stroke-width="2.5" stroke-dasharray="6 5" opacity="0.8"/>
+        <!-- Inner circle -->
+        <circle cx="50" cy="50" r="33" stroke="url(#icon-grad)" stroke-width="1.5" />
+        <!-- Center pentagon -->
+        <polygon points="50,37 62,46 57,60 43,60 38,46" fill="url(#icon-grad)" fill-opacity="0.25" stroke="url(#icon-grad)" stroke-width="1.5"/>
+        <!-- Radiant grid patterns -->
+        <line x1="50" y1="37" x2="50" y2="17" stroke="url(#icon-grad)" stroke-width="1.5"/>
+        <line x1="62" y1="46" x2="77" y2="35" stroke="url(#icon-grad)" stroke-width="1.5"/>
+        <line x1="57" y1="60" x2="69" y2="79" stroke="url(#icon-grad)" stroke-width="1.5"/>
+        <line x1="43" y1="60" x2="31" y2="79" stroke="url(#icon-grad)" stroke-width="1.5"/>
+        <line x1="38" y1="46" x2="23" y2="35" stroke="url(#icon-grad)" stroke-width="1.5"/>
+      </svg>
+      <span class="gallery-center-badge">🏆 2026 FAN PACK</span>
+      <h3 class="gallery-center-title">THE ULTIMATE<br>EXPERIENCE</h3>
+      <button class="gallery-center-btn" onclick="openBuyModal()">Buy Now (₹99) →</button>
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.25s">
+      <img src="MBAPPÉ.jpeg" alt="Mbappe World Cup wallpaper preview" loading="lazy" />
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.3s">
+      <img src="download (17).jpeg" alt="Fan Pack match schedule poster preview" loading="lazy" />
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.35s">
+      <img src="download (18).jpeg" alt="Fan Pack stat cheat sheet preview" loading="lazy" />
+    </div>
+    <div class="gallery-item reveal" style="transition-delay:.4s">
+      <img src="download (19).jpeg" alt="FIFA World Cup 2026 prediction tracker preview" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer role="contentinfo">
+    <span class="footer-brand">FIFA Fan Pack 2026</span>
+    <p class="footer-legal">Not affiliated with FIFA. Fan-made digital product.</p>
+    <p class="footer-credit">Made with Lovart + Figma</p>
+  </footer>
+
+  <!-- ══ BUY POPUP MODAL ══ -->
+  <div class="modal-overlay" id="buy-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="modal-box" id="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">×</button>
+
+      <div class="modal-inner">
+        <div class="modal-badge">⚽ Limited time — ₹99 only</div>
+
+        <h2 class="modal-title" id="modal-heading">FIFA World Cup 2026<br>Digital Fan Pack</h2>
+        <p class="modal-sub">Everything you need to enjoy the biggest World Cup in history.
+        One purchase. Instant download. Zero subscription.</p>
+
+        <div class="modal-hr"></div>
+
+        <!-- What's inside perks -->
+        <div class="modal-perks">
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>32-Team Wallpaper Pack</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Prediction Tracker</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>104-Match Schedule</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Exact IST Kick-off Times</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Stats Cheat Sheet PDF</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Notion World Cup Tracker</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Match Schedule Poster</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Excel &amp; Sheets Tracker</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Group-Wise Fixtures</div>
+          <div class="modal-perk"><div class="modal-perk-dot">✓</div>Tournament Wall Poster</div>
+        </div>
+
+        <!-- Price block -->
+        <div class="modal-price-row">
+          <div class="modal-price-left">
+            <div class="modal-price-label">Total price</div>
+            <div class="modal-price-amount">₹99</div>
+            <div class="modal-price-note">One-time payment • No recurring charges</div>
+          </div>
+          <div class="modal-price-items">
+            32 wallpapers
+            <br>Notion + Sheets tracker
+            <br>PDF schedule + poster
+          </div>
+        </div>
+
+        <!-- Buy button — real Gumroad link -->
+        <a
+          href="https://3964945475373.gumroad.com/l/rxjvv"
+          class="modal-buy-btn"
+          id="modal-gumroad-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Buy now on Gumroad →</a>
+
+        <!-- Trust row -->
+        <div class="modal-trust-row">
+          <span>🔒 Secure checkout</span>
+          <span>⚡ Instant delivery</span>
+          <span>No subscription</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    'use strict';
+
+    /* ── Modal logic ── */
+    const GUMROAD_URL = 'https://3964945475373.gumroad.com/l/rxjvv';
+
+    const modalOverlay = document.getElementById('buy-modal');
+    const modalBox     = document.getElementById('modal-box');
+    const modalClose   = document.getElementById('modal-close-btn');
+
+    function openBuyModal() {
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modalBox.querySelector('#modal-gumroad-link').focus();
+    }
+
+    function closeBuyModal() {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Expose globally (used by onclick attributes)
+    window.openBuyModal = openBuyModal;
+
+    // Close on X button
+    modalClose.addEventListener('click', closeBuyModal);
+
+    // Close on overlay click (outside box)
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay) closeBuyModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+        closeBuyModal();
+      }
+    });
+
+    /* ── Scroll-reveal ── */
+    (function () {
+      const reveals = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('visible'));
+      }
+    })();
+
+    /* ── Nav scroll class ── */
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.pageYOffset > 60);
+    }, { passive: true });
+
+    /* ── Dynamic pricing based on location ── */
+    async function initPricing() {
+      let isIndia = false;
+      
+      // Fallback 1: Browser Timezone check
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (tz && (tz.includes('Calcutta') || tz.includes('Kolkata') || tz.includes('Asia/India') || tz.includes('Asia/Calcutta') || tz.includes('Asia/Kolkata') || tz.includes('IST'))) {
+          isIndia = true;
+        }
+      } catch (e) {
+        console.error("Timezone detection failed", e);
+      }
+
+      // Fallback 2: Geolocation API
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+        const response = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+        clearTimeout(timeoutId);
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.country_code === 'IN') {
+            isIndia = true;
+          } else if (data && data.country_code) {
+            isIndia = false; // explicitly outside India
+          }
+        }
+      } catch (e) {
+        console.warn("IP geolocation API failed or timed out, relying on timezone detection.", e);
+      }
+
+      // Apply pricing values
+      const priceText = isIndia ? '₹99' : '$1.99';
+      const badgeText = isIndia ? '⚽ Limited time — ₹99 only' : '⚽ Limited time — $1.99 only';
+      const galleryBtnText = isIndia ? 'Buy Now (₹99) →' : 'Buy Now ($1.99) →';
+
+      // Update elements
+      const priceAmountEl = document.querySelector('.modal-price-amount');
+      if (priceAmountEl) priceAmountEl.textContent = priceText;
+
+      const modalBadgeEl = document.querySelector('.modal-badge');
+      if (modalBadgeEl) modalBadgeEl.textContent = badgeText;
+
+      const galleryBtnEl = document.querySelector('.gallery-center-btn');
+      if (galleryBtnEl) galleryBtnEl.textContent = galleryBtnText;
+    }
+
+    // Call on load
+    document.addEventListener('DOMContentLoaded', initPricing);
+
+  </script>
+
+</body>
+</html>
